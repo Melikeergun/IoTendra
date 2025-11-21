@@ -1,0 +1,98 @@
+<div class="auth-main">
+  <div class="home-card">
+    <div class="home-header">
+      <h1 class="home-title">IoTendra</h1>
+      <p class="home-subtitle">Akıllı Ev Yönetim Sistemi</p>
+    </div>
+    
+    <div *ngIf="!isLoggedIn" class="home-content">
+      <p class="home-description">
+        Sensörlerinizi takip edin, akıllı evinizi yönetin.
+      </p>
+      <a routerLink="/auth" class="auth-button home-auth-btn">
+        Başlayalim
+      </a>
+    </div>
+    
+    <div *ngIf="isLoggedIn" class="home-content">
+      <p class="home-description">
+        Hoş geldiniz! Sensör verilerinizi görüntüleyin.
+      </p>
+      <div class="home-actions">
+        <a routerLink="/sensors" class="auth-button">Sensörleri Gör</a>
+        <button (click)="logout()" class="auth-button danger">Çıkış Yap</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.home-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 50px 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.home-header {
+  margin-bottom: 30px;
+}
+
+.home-title {
+  color: #667eea;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-subtitle {
+  color: #666;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.home-description {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.home-auth-btn {
+  font-size: 18px;
+  padding: 18px 40px;
+  font-weight: 600;
+}
+
+.home-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.danger {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+}
+
+.danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+}
+</style>

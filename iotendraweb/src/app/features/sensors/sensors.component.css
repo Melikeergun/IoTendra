@@ -1,0 +1,215 @@
+/* Modern Smart Home Control Panel CSS */
+
+.smart-home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.sensors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sensor-card {
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sensor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.sensor-card.active {
+  color: white;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.sensor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sensor-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.sensor-card.active .sensor-icon-wrapper {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.sensor-icon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.sensor-card:not(.active) .sensor-icon {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+.sensor-card.active .sensor-icon {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(109deg) brightness(105%) contrast(105%);
+}
+
+.toggle-switch {
+  width: 50px;
+  height: 25px;
+  background: #ddd;
+  border-radius: 25px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.toggle-switch.active {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.toggle-slider {
+  width: 21px;
+  height: 21px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch.active .toggle-slider {
+  transform: translateX(25px);
+}
+
+.sensor-info {
+  margin-bottom: 15px;
+}
+
+.sensor-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+}
+
+.sensor-name.active-text {
+  color: white;
+}
+
+.sensor-status {
+  font-size: 0.9rem;
+  margin: 0;
+  color: #7f8c8d;
+  transition: color 0.3s ease;
+}
+
+.sensor-status.active-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.sensor-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #34495e;
+  transition: color 0.3s ease;
+}
+
+.sensor-value.active-text {
+  color: white;
+}
+
+.bottom-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+}
+
+.weather-info,
+.energy-info {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.weather-info h3,
+.energy-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.weather-info p,
+.energy-info p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .sensors-grid {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+  
+  .bottom-info {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+  
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .sensor-card {
+    padding: 20px;
+  }
+}

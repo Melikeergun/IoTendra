@@ -1,0 +1,44 @@
+<div class="smart-home-container">
+  <div class="header">
+    <h1 class="main-title">Smart Home Control</h1>
+    <p class="subtitle">Manage your home devices from anywhere</p>
+  </div>
+
+  <div class="sensors-grid">
+    <div *ngFor="let sensor of sensors; let i = index" 
+         class="sensor-card" 
+         [class.active]="sensor.isActive"
+         [style.background]="sensor.isActive ? 'linear-gradient(135deg, ' + sensor.color + ', ' + sensor.color + '99)' : '#f8f9fa'"
+         (click)="onSensorClick(sensor)">
+      
+      <div class="sensor-header">
+        <div class="sensor-icon-wrapper">
+          <i [class]="sensor.icon"></i>
+        </div>
+        <div class="toggle-switch" [class.active]="sensor.isActive">
+          <div class="toggle-slider"></div>
+        </div>
+      </div>
+      
+      <div class="sensor-info">
+        <h3 class="sensor-name" [class.active-text]="sensor.isActive">{{ sensor.name }}</h3>
+        <p class="sensor-status" [class.active-text]="sensor.isActive">{{ sensor.status }}</p>
+      </div>
+      
+      <div class="sensor-value" [class.active-text]="sensor.isActive">
+        {{ sensor.value }}{{ sensor.name === 'Lighting' ? '%' : '' }}
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-info">
+    <div class="weather-info">
+      <h3>Today's Weather</h3>
+      <p>24°C - Sunny</p>
+    </div>
+    <div class="energy-info">
+      <h3>Energy Usage</h3>
+      <p>2.4 kWh today</p>
+    </div>
+  </div>
+</div>

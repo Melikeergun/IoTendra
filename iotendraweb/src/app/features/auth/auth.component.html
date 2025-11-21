@@ -1,0 +1,59 @@
+<div class="auth-container">
+  <div class="auth-wrapper" [class.sign-up-mode]="signUpMode">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <!-- Login Form -->
+        <form class="sign-in-form" (ngSubmit)="login()">
+          <h2 class="title">Giriş Yap</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Kullanıcı Adı" [(ngModel)]="userName" name="userName" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Şifre" [(ngModel)]="password" name="password" required />
+          </div>
+          <input type="submit" value="Giriş" class="btn solid" [disabled]="loading" />
+        </form>
+
+        <!-- Register Form -->
+        <form class="sign-up-form" (ngSubmit)="register()">
+          <h2 class="title">Kayıt Ol</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Kullanıcı Adı" [(ngModel)]="regUserName" name="regUserName" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="E-posta" [(ngModel)]="regEmail" name="regEmail" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Şifre" [(ngModel)]="regPassword" name="regPassword" required />
+          </div>
+          <input type="submit" value="Kayıt Ol" class="btn solid" [disabled]="loading" />
+        </form>
+      </div>
+    </div>
+
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>Yeni misin?</h3>
+          <p>IoTendra'ya hoş geldin! Hesabını oluştur ve sensörlerini yönetmeye başla.</p>
+          <button class="btn transparent" (click)="toggleMode()">Kayıt Ol</button>
+        </div>
+      </div>
+      <div class="panel right-panel">
+        <div class="content">
+          <h3>Zaten hesabın var mı?</h3>
+          <p>Sensör verilerini görmek için hesabına giriş yap.</p>
+          <button class="btn transparent" (click)="toggleMode()">Giriş Yap</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+    <div *ngIf="success" class="success-message">{{ success }}</div>
+  </div>
+</div>
